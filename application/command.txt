@@ -1,0 +1,6 @@
+Nom de la machine
+[system.environment]::MachineName
+Carte Graphique:
+wmic path win32_VideoController get name
+RAM
+$Taille_RAM_MAX=[STRING]((Get-WmiObject -Class Win32_ComputerSystem ).TotalPhysicalMemory/1GB)
