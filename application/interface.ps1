@@ -54,6 +54,22 @@ $lblVideoController.Text = "Carte graphique: `n"+ $VideoControllerName + "`n" + 
 $frmMain.Controls.Add($lblVideoController)
 #------------------------------
 
+#User
+#$i = 0
+$lblUser = New-Object System.Windows.Forms.Label
+$lblUser.Location = New-Object System.Drawing.Point(10,90)
+$lblUser.AutoSize = $true
+$InfoUser = Get-WmiObject -Class Win32_UserAccount -Filter  "LocalAccount='True'" | select name, fullname
+$lblUser.Text = "User: " + $InfoUser.Name + " "
+#Foreach ($Name in $InfoUser.Name)
+#{
+#$lblUserName + i++ = New-Object System.Windows.Forms.Label
+#$lblUserName.Location = New-Object System.Drawing.Point(10,(90 + $i))
+#$lblUserName.Text = $Name
+#}
+$frmMain.Controls.Add($lblUser)
+#------------------------------
+
 #Génération de la Form
 $frmMain.add_Load($OnLoadForm_StateCorrection)
 $frmMain.ShowDialog()| Out-Null 
