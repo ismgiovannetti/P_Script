@@ -26,6 +26,16 @@ $frmMain.Name = "frmMain"
 $frmMain.Text = [system.environment]::MachineName
 #------------------------------
 
+#User
+#$i = 0
+$lblUser = New-Object System.Windows.Forms.Label
+$lblUser.Location = New-Object System.Drawing.Point(10,120)
+$lblUser.AutoSize = $true
+$InfoUser = Get-WmiObject -Class Win32_UserAccount -Filter  "LocalAccount='True'" | Select PSComputername, Name, Status, Disabled, AccountType, Lockout, PasswordRequired, PasswordChangeable | Out-GridView
+$lblUser.Text = "User: " + $InfoUser.Name + " "
+$frmMain.Controls.Add($lblUser)
+#------------------------------
+
 #Nom de la machine
 $lblMachineName = New-Object System.Windows.Forms.Label
 $lblMachineName.Location = New-Object System.Drawing.Point(10,20)
@@ -54,21 +64,6 @@ $lblVideoController.Text = "Carte graphique: `n"+ $VideoControllerName + "`n" + 
 $frmMain.Controls.Add($lblVideoController)
 #------------------------------
 
-#User
-#$i = 0
-$lblUser = New-Object System.Windows.Forms.Label
-$lblUser.Location = New-Object System.Drawing.Point(10,90)
-$lblUser.AutoSize = $true
-$InfoUser = Get-WmiObject -Class Win32_UserAccount -Filter  "LocalAccount='True'" | select name, fullname
-$lblUser.Text = "User: " + $InfoUser.Name + " "
-#Foreach ($Name in $InfoUser.Name)
-#{
-#$lblUserName + i++ = New-Object System.Windows.Forms.Label
-#$lblUserName.Location = New-Object System.Drawing.Point(10,(90 + $i))
-#$lblUserName.Text = $Name
-#}
-$frmMain.Controls.Add($lblUser)
-#------------------------------
 
 #Génération de la Form
 $frmMain.add_Load($OnLoadForm_StateCorrection)
