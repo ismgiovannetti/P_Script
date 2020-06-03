@@ -1,6 +1,7 @@
-﻿#Auteur: Ismael Giovannetti
-#Date: 27.03.2020
-#Modif:
+﻿#Auteur: Ismael Giovannetti - Tiago Ferreira - Jérémy Deslile - Daniel Gil
+#Date: 03.06.2020
+#Modif: 03.06.2020
+
 #Fonctions Boutons
 function ShowUser
 {
